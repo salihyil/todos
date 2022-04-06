@@ -23,8 +23,12 @@ function Todo(props) {
   const [text, setText] = useState(props.text);
 
   const deleteTodo = () => {
-    deleteItem(props.id);
-    dispatch(setTodoList());
+    // eslint-disable-next-line no-restricted-globals
+    const result = confirm("Are you sure you want to delete this todo?");
+    if (result) {
+      deleteItem(props.id);
+      dispatch(setTodoList());
+    }
   };
 
   const toggleTodo = (e) => {
