@@ -1,0 +1,7 @@
+.todo_list {
+  display: flex;
+}
+
+.completed {
+  text-decoration: line-through;
+}
