@@ -4,6 +4,7 @@ const initialState = {
   todos: [],
   loading: false,
   error: null,
+  disabledButton: true,
 };
 
 export const todoSlice = createSlice({
@@ -16,7 +17,6 @@ export const todoSlice = createSlice({
     setTodoListSuccess: (state, action) => {
       state.loading = false;
       //console.log(action.payload);
-    
       state.todos = action.payload;
     },
     setTodoListError: (state, action) => {
@@ -24,9 +24,16 @@ export const todoSlice = createSlice({
       state.error = action.payload;
       state.todos = [];
     },
+    updateButtonChanged: (state, action) => {
+      state.disabledButton = action.payload;
+    },
   },
 });
 
-export const { setTodoList, setTodoListSuccess, setTodoListError } =
-  todoSlice.actions;
+export const {
+  setTodoList,
+  setTodoListSuccess,
+  setTodoListError,
+  updateButtonChanged,
+} = todoSlice.actions;
 export default todoSlice.reducer;

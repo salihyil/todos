@@ -6,10 +6,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteItem } from "services";
 import { setTodoList } from "store/todo";
 
-function DeleteButtonTodo() {
+function DeleteButtonTodo({ id }) {
   const dispatch = useDispatch();
 
-  const deleteTodo = ({ id }) => {
+  const deleteTodoClick = () => {
+    console.log(id);
     // eslint-disable-next-line no-restricted-globals
     const result = confirm("Are you sure you want to delete this todo?");
     if (result) {
@@ -17,8 +18,9 @@ function DeleteButtonTodo() {
       dispatch(setTodoList());
     }
   };
+
   return (
-    <Button onClick={deleteTodo}>
+    <Button onClick={deleteTodoClick}>
       <DeleteIcon />
     </Button>
   );
