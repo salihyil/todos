@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import { updateTextItem } from "services";
 import { useDispatch, useSelector } from "react-redux";
 import { setTodoList } from "store/todo";
@@ -18,9 +18,11 @@ function UpdateButtonTodo(props) {
   };
 
   return (
-    <Button onClick={updateTodo} disabled={disabledButton}>
-      Güncelle
-    </Button>
+    <Tooltip title="Güncelle">
+      <Button onClick={updateTodo} disabled={disabledButton}>
+        Güncelle
+      </Button>
+    </Tooltip>
   );
 }
 
