@@ -1,12 +1,11 @@
 import { Button, FormControl, Input, InputLabel } from "@mui/material";
 import { useState, useEffect } from "react";
-import Todo from "components/Todo";
-
 import { useSelector, useDispatch } from "react-redux";
-import { setTodoList } from "store/todo";
 
-import "./App.css";
+import { TodoList } from "components";
+import { setTodoList } from "store/todo";
 import { addItem } from "./services";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,9 +53,9 @@ function App() {
 
         {loading ? (
           <p>Loading...</p>
-        ) : ( 
+        ) : (
           todos.map((item, i) => (
-            <Todo
+            <TodoList
               key={i}
               id={item.id}
               text={item.text}

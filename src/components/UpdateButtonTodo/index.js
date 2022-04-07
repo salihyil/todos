@@ -5,7 +5,7 @@ import { updateTextItem } from "services";
 import { useDispatch } from "react-redux";
 import { setTodoList } from "store/todo";
 
-function UpdateTodo(props) {
+function UpdateButtonTodo(props) {
   const dispatch = useDispatch();
 
   const updateTodo = () => {
@@ -20,4 +20,4 @@ function UpdateTodo(props) {
   );
 }
 
-export default UpdateTodo;
+export default UpdateButtonTodo;
