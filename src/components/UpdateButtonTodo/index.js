@@ -19,9 +19,11 @@ function UpdateButtonTodo(props) {
 
   return (
     <Tooltip title="Güncelle">
-      <Button onClick={updateTodo} disabled={disabledButton}>
-        Güncelle
-      </Button>
+      <span>
+        <Button onClick={updateTodo} disabled={disabledButton}>
+          Güncelle
+        </Button>
+      </span>
     </Tooltip>
   );
 }

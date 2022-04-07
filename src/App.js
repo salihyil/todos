@@ -51,16 +51,18 @@ function App() {
 
         {error && <p>{error}</p>}
 
-        {loading && <p>Loading...</p>}
-
-        {todos.map((item, i) => (
-          <TodoList
-            key={i}
-            id={item.id}
-            text={item.text}
-            completed={item.completed}
-          />
-        ))}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          todos.map((item, i) => (
+            <TodoList
+              key={i}
+              id={item.id}
+              text={item.text}
+              completed={item.completed}
+            />
+          ))
+        )}
       </header>
     </div>
   );

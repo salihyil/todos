@@ -13,6 +13,7 @@ import {
 function TodoList(props) {
   const [checked, setChecked] = useState(props.completed);
   const [text, setText] = useState(props.text);
+  
 
   return (
     <List className="todo_list">
@@ -27,7 +28,7 @@ function TodoList(props) {
         <InputTodo text={text} setText={setText} completed={props.completed} />
       </ListItem>
       <UpdateButtonTodo text={text} id={props.id} />
-      <DeleteButtonTodo id={props.id} />
+      <DeleteButtonTodo id={props.id} text={text} />
     </List>
   );
 }
