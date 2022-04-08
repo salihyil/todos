@@ -9,11 +9,11 @@ import {
   DeleteButtonTodo,
   InputTodo,
 } from "components";
+import { Link } from "react-router-dom";
 
 function TodoList(props) {
   const [checked, setChecked] = useState(props.completed);
   const [text, setText] = useState(props.text);
-  
 
   return (
     <List className="todo_list">
@@ -25,9 +25,12 @@ function TodoList(props) {
             id={props.id}
           />
         </ListItemAvatar>
+
         <InputTodo text={text} setText={setText} completed={props.completed} />
+
+        <Link to={`/edit`}>Düzenle</Link>
       </ListItem>
-      <UpdateButtonTodo text={text} id={props.id} />
+      <UpdateButtonTodo id={props.id} text={text} />
       <DeleteButtonTodo id={props.id} text={text} />
     </List>
   );

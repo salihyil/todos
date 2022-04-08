@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { updateButtonChanged } from "store/todo";
-
 import { Input } from "@mui/material";
+
+import { updateButtonChanged } from "store/todo";
 
 function InputTodo({ text, setText, completed }) {
   const dispatch = useDispatch();

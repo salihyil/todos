@@ -32,7 +32,7 @@ async function addItem(input) {
       text: input,
       completed: false,
     });
- 
+
     return returnData;
   } catch (error) {
     return false;

@@ -1,0 +1,12 @@
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid black;
+  padding: 10px;
+  height: 10vh;
+  position: relative;
+  top: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

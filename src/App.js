@@ -10,6 +10,7 @@ import "./App.css";
 function App() {
   const dispatch = useDispatch();
   const { todos, loading, error } = useSelector((state) => state.todo);
+
   const [input, setInput] = useState("");
 
   useEffect(() => {
