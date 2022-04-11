@@ -55,14 +55,7 @@ function App() {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          todos.map((item, i) => (
-            <TodoList
-              key={i}
-              id={item.id}
-              text={item.text}
-              completed={item.completed}
-            />
-          ))
+          todos.map((item, i) => <TodoList key={i} {...item}></TodoList>)
         )}
       </header>
     </div>

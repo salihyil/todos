@@ -23,6 +23,17 @@ async function getList() {
   return returnData;
 }
 
+async function getText() {
+  let returnData = [];
+
+  const snapshot = await getDocs(collection(db, "todos"));
+  snapshot.forEach((doc) => {
+    returnData.push({ ...doc.data() });
+  });
+  //console.log(returnData);
+  return returnData;
+}
+
 async function addItem(input) {
   try {
     const todosCol = collection(db, "todos");
@@ -40,8 +51,8 @@ async function addItem(input) {
 }
 
 async function updateItem(id, data) {
-  console.log("data", data);
-  console.log("id", id);
+  /* console.log("data", data);
+  console.log("id", id); */
   try {
     await updateDoc(doc(db, "todos", id), {
       completed: data.completed,
@@ -73,4 +84,4 @@ async function deleteItem(id) {
   }
 }
 
-export { getList, addItem, updateItem, deleteItem, updateTextItem };
+export { getList, addItem, updateItem, deleteItem, updateTextItem, getText };

@@ -1,37 +1,85 @@
 import React, { useState } from "react";
-import { List, ListItem, ListItemAvatar } from "@mui/material";
-
-import "./style.css";
-
-import {
-  UpdateButtonTodo,
-  CheckboxTodo,
-  DeleteButtonTodo,
-  InputTodo,
-} from "components";
+import { useDispatch, useSelector } from "react-redux";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 
+import "./style.css";
+import { deleteItem, updateTextItem, updateItem } from "services";
+import { setTodoList, updateButtonChanged } from "store/todo";
+import {
+  List,
+  ListItem,
+  ListItemAvatar,
+  Button,
+  Tooltip,
+  Input,
+  Checkbox,
+} from "@mui/material";
+
 function TodoList(props) {
+  const dispatch = useDispatch();
+
   const [checked, setChecked] = useState(props.completed);
   const [text, setText] = useState(props.text);
+
+  /* const [item, setItem] = useState(props);
+  console.log(item); */
+  console.log(props);
+
+  const textTodoChange = (e) => {
+    setText(e.target.value);
+    dispatch(updateButtonChanged(false));
+  };
+
+  const toggleTodo = (e) => {
+    //console.log(e.target.checked);
+    setChecked(e.target.checked);
+    updateItem(props.id, { completed: e.target.checked });
+    dispatch(setTodoList());
+  };
+
+  const updateTodo = () => {
+    updateTextItem(props.id, { text: text });
+    dispatch(setTodoList());
+    dispatch(updateButtonChanged(true));
+  };
+
+  const deleteTodoClick = () => {
+    // eslint-disable-next-line no-restricted-globals
+    const result = confirm(
+      `Are you sure you want to delete this todo -> ${props.text}?`
+    );
+    if (result) {
+      deleteItem(props.id);
+      dispatch(setTodoList());
+    }
+  };
 
   return (
     <List className="todo_list">
       <ListItem>
         <ListItemAvatar>
-          <CheckboxTodo
-            checked={checked}
-            setChecked={setChecked}
-            id={props.id}
-          />
+          <Checkbox checked={checked} onChange={toggleTodo} />
         </ListItemAvatar>
 
-        <InputTodo text={text} setText={setText} completed={props.completed} />
+        <Input
+          value={text}
+          className={props.completed === true ? "completed" : ""}
+          onChange={textTodoChange}
+        />
 
-        <Link to={`/edit`}>Düzenle</Link>
+        <Link to={`edit/${props.text}`}>Düzenle</Link>
       </ListItem>
-      <UpdateButtonTodo id={props.id} text={text} />
-      <DeleteButtonTodo id={props.id} text={text} />
+
+      <Tooltip title="Güncelle">
+        <span>
+          <Button onClick={updateTodo}>Güncelle</Button>
+        </span>
+      </Tooltip>
+
+      <Button onClick={deleteTodoClick}>
+        <DeleteIcon />
+      </Button>
     </List>
   );
 }

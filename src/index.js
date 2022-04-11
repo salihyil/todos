@@ -16,7 +16,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="edit" element={<Edit />} />
+          {/*  <Route path="edit/" element={<Edit />} /> */}
         </Routes>
       </BrowserRouter>
     </StrictMode>

@@ -4,7 +4,6 @@ const initialState = {
   todos: [],
   loading: false,
   error: null,
-  disabledButton: true,
 };
 
 export const todoSlice = createSlice({
@@ -23,9 +22,6 @@ export const todoSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
       state.todos = [];
-    },
-    updateButtonChanged: (state, action) => {
-      state.disabledButton = action.payload;
     },
   },
 });
