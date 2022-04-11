@@ -13,6 +13,8 @@ function App() {
 
   const [input, setInput] = useState("");
 
+  //console.log(todos);
+
   useEffect(() => {
     dispatch(setTodoList());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,7 +57,11 @@ function App() {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          todos.map((item, i) => <TodoList key={i} {...item}></TodoList>)
+          todos.map((item, i) => (
+            <TodoList key={i} {...item}>
+              {/*  <div>children</div> */}
+            </TodoList>
+          ))
         )}
       </header>
     </div>

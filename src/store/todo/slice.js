@@ -26,10 +26,6 @@ export const todoSlice = createSlice({
   },
 });
 
-export const {
-  setTodoList,
-  setTodoListSuccess,
-  setTodoListError,
-  updateButtonChanged,
-} = todoSlice.actions;
+export const { setTodoList, setTodoListSuccess, setTodoListError } =
+  todoSlice.actions;
 export default todoSlice.reducer;

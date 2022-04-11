@@ -7,6 +7,7 @@ import {
   updateDoc,
   doc,
   setDoc,
+  getDoc,
 } from "firebase/firestore";
 
 async function getList() {
@@ -23,15 +24,18 @@ async function getList() {
   return returnData;
 }
 
-async function getText() {
-  let returnData = [];
+async function getItem(id) {
+  const docRef = doc(db, "todos", id);
+  const docSnap = await getDoc(docRef);
 
-  const snapshot = await getDocs(collection(db, "todos"));
-  snapshot.forEach((doc) => {
-    returnData.push({ ...doc.data() });
-  });
-  //console.log(returnData);
-  return returnData;
+  if (docSnap.exists()) {
+    //console.log("Document data:", docSnap.data());
+    return docSnap.data();
+  } else {
+    // doc.data() will be undefined in this case
+    //console.log("No such document!");
+    return {};
+  }
 }
 
 async function addItem(input) {
@@ -84,4 +88,4 @@ async function deleteItem(id) {
   }
 }
 
-export { getList, addItem, updateItem, deleteItem, updateTextItem, getText };
+export { getList, addItem, updateItem, deleteItem, updateTextItem, getItem };
