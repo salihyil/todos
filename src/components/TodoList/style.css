@@ -9,3 +9,12 @@
 ul {
   align-items: center;
 }
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 3px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}

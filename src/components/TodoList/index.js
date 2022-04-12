@@ -27,6 +27,16 @@ function TodoList({ children, ...props }) {
 
   const textTodoChange = (e) => {
     setText(e.target.value);
+
+    console.log(inputEl.current.value.length);
+    console.log(text.length);
+    if (inputEl.current.value.length > text.length) {
+      inputEl.current.style.color = "red";
+    } else {
+      inputEl.current.style.color = "black";
+    }
+
+    updateTextItem(props.id, { text: e.target.value });
   };
 
   const toggleTodo = (e) => {
