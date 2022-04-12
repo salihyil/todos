@@ -1,6 +1,6 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 
-import { setTodoList, setTodoListSuccess, setTodoListError } from "./slice";
+import { setTodoListSuccess, setTodoListError } from "./slice";
 import { getList } from "services";
 
 //saga generator fonksiyon
@@ -16,5 +16,5 @@ function* fetchTodo() {
 
 //rootSaga
 export function* todoSaga() {
-  yield takeEvery(setTodoList, fetchTodo); //actionType sonra saga fonksiyon
+  yield takeEvery("todo/setTodoList", fetchTodo); //actionType sonra saga fonksiyon
 }

@@ -12,15 +12,11 @@ import {
 
 async function getList() {
   let returnData = [];
-
   const snapshot = await getDocs(collection(db, "todos"));
-
   if (snapshot.empty) return [];
-
   snapshot.forEach((doc) => {
     returnData.push({ ...doc.data() });
   });
-
   return returnData;
 }
 
@@ -73,6 +69,7 @@ async function updateTextItem(id, data) {
   try {
     await updateDoc(doc(db, "todos", id), {
       text: data.text,
+      completed: data.completed,
     });
     return data;
   } catch (error) {

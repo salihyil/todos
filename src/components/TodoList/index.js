@@ -11,8 +11,6 @@ import {
   ListItem,
   ListItemAvatar,
   Button,
-  Tooltip,
-  Input,
   Checkbox,
 } from "@mui/material";
 
@@ -80,7 +78,7 @@ function TodoList({ children, ...props }) {
           />
 
           <Button>
-            <Link to={`todos/${props.id}`}>Düzenle</Link>
+            <Link to={`edit/${props.id}`}>Düzenle</Link>
           </Button>
 
           <Button onClick={deleteTodoClick}>
