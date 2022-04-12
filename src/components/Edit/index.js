@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 
 import "./style.css";
+import "react-toastify/dist/ReactToastify.css";
 import { Button, Checkbox, Input } from "@mui/material";
 import { getItem, updateTextItem } from "services";
 
@@ -42,8 +44,9 @@ function Edit() {
   };
 
   const updateTodo = () => {
+    toast("Todo Güncellendi");
     updateTextItem(data.id, { text: data.text, completed: data.completed });
-    dispatch(setTodoList());
+    /*  dispatch(setTodoList()); */
   };
 
   return (
@@ -70,6 +73,7 @@ function Edit() {
         </>
       )}
       {error && <div>{error}</div>}
+      <ToastContainer />
     </>
   );
 }

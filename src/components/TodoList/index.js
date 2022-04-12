@@ -26,8 +26,6 @@ function TodoList({ children, ...props }) {
   const textTodoChange = (e) => {
     setText(e.target.value);
 
-    console.log(inputEl.current.value.length);
-    console.log(text.length);
     if (inputEl.current.value.length > text.length) {
       inputEl.current.style.color = "red";
     } else {
@@ -44,11 +42,6 @@ function TodoList({ children, ...props }) {
     updateItem(props.id, { completed: e.target.checked });
     dispatch(setTodoList());
   };
-
-  /*  const updateTodo = () => {
-    updateTextItem(props.id, { text: text });
-    dispatch(setTodoList());
-  }; */
 
   const deleteTodoClick = () => {
     // eslint-disable-next-line no-restricted-globals
@@ -85,12 +78,6 @@ function TodoList({ children, ...props }) {
             <DeleteIcon />
           </Button>
         </ListItem>
-
-        {/*  <Tooltip title="Güncelle">
-          <span>
-            <Button onClick={updateTodo}>Güncelle</Button>
-          </span>
-        </Tooltip> */}
       </List>
     </>
   );
