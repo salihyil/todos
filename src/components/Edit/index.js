@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 
 import "./style.css";
-import "react-toastify/dist/ReactToastify.css";
+
 import { Button, Checkbox, Input } from "@mui/material";
 import { getItem, updateTextItem } from "services";
 
@@ -44,7 +44,15 @@ function Edit() {
   };
 
   const updateTodo = () => {
-    toast("Todo Güncellendi");
+    toast.info("Todo güncellendi.", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     updateTextItem(data.id, { text: data.text, completed: data.completed });
     /*  dispatch(setTodoList()); */
   };

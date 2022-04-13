@@ -13,6 +13,7 @@ import {
   Button,
   Checkbox,
 } from "@mui/material";
+import { toast } from "react-toastify";
 
 function TodoList({ children, ...props }) {
   const dispatch = useDispatch();
@@ -41,6 +42,17 @@ function TodoList({ children, ...props }) {
     setChecked(e.target.checked);
     updateItem(props.id, { completed: e.target.checked });
     dispatch(setTodoList());
+    if (!e.target.checked) {
+      toast.info(`" ${props.text}" yapılmadı olarak güncellendi.`, {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    } else {
+      toast.info(`" ${props.text}" yapıldı olarak güncellendi.`, {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
   };
 
   const deleteTodoClick = () => {
